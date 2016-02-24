@@ -1,0 +1,15 @@
+Brew APi 
+
+
+
+1) Description 
+
+This is a Rest api to store Sensor and Data to manage controle beer fabrication.
+
+2) Api technologie 
+
+Server : Nodejs with express.js and mongoose 
+DB : Mongodb 
+Monitoring node package : npm-check-updates (install with npm install -g npm-check-updates)
+ 
+

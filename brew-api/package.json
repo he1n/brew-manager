@@ -4,9 +4,9 @@
   "description": "beer fabrication rest api with model for data ",
   "main": "server.js",
   "dependencies": {
-      "express": "~4.0.0",
-      "mongoose": "~3.6.13",
-      "body-parser": "~1.0.1"
+      "express": "~4.13.4",
+      "mongoose": "~4.4.4",
+      "body-parser": "~1.15.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

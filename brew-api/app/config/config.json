@@ -1,0 +1,14 @@
+{
+	"database": {
+		"opt": {
+			"user": "brew",
+			"pass": "brew",
+			"auth": {
+				"authdb": "admin"
+			}
+		},
+		"port": 27017,
+		"host": "localhost",
+		"base": "brewbase"
+	}
+}
