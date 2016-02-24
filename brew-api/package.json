@@ -1,0 +1,24 @@
+{
+  "name": "beerapi",
+  "version": "1.0.0",
+  "description": "beer fabrication rest api with model for data ",
+  "main": "server.js",
+  "dependencies": {
+      "express": "~4.0.0",
+      "mongoose": "~3.6.13",
+      "body-parser": "~1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/he1n/brew-manager.git"
+  },
+  "author": "he1n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/he1n/brew-manager/issues"
+  },
+  "homepage": "https://github.com/he1n/brew-manager#readme"
+}
