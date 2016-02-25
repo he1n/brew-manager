@@ -9,6 +9,7 @@ var brewingSchema   = new Schema({
     name: String,
     description: String,
     date: { type: Date, default: Date.now },
+    profilId: String
 });
 
 
