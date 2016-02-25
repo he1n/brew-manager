@@ -77,7 +77,8 @@ router.route('/data')
                         res.json({ message: '1' });
                     });
                 }else{
-                     res.json({ message: '404' });
+                        res.status(404)        // HTTP status 404: NotFound
+                           .send('Not found');
                 } 
             });
         }else{
@@ -114,7 +115,7 @@ router.route('/brewing')
             var brewing = new Brewing();
             brewing.name = req.body.name;
             brewing.description = req.body.description; 
-            brewing.date = req.body.date; 
+            brewing.profilId = req.body.profilId; 
             brewing.save(function(err){
                 if (err){
                     res.send(err);
@@ -206,7 +207,8 @@ router.route('/temperature')
                         res.json({ message: '1' });
                     });
                 }else{
-                     res.json({ message: '404' });
+                        res.status(404)        // HTTP status 404: NotFound
+                           .send('Not found');
                 } 
             });
         }else{
