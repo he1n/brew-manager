@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
-
+import time
 
 
 if __name__ == "__main__":
