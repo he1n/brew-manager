@@ -5,7 +5,8 @@ import time
 
 if __name__ == "__main__":
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(11, GPIO.OUT, initial = GPIO.HIGH)
+    gpionb = 23
+    GPIO.setup(gpionb, GPIO.OUT, initial = GPIO.HIGH)
     while True:
-        GPIO.output(11, not GPIO.input(11))
+        GPIO.output(gpionb, not GPIO.input(gpionb))
         time.sleep(20)
