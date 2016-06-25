@@ -12,6 +12,7 @@ class Logger:
         conn = httplib.HTTPConnection("api.thingspeak.com:80")
         try:
             conn.request("POST", "/update", params, headers)
+            print("write temp "+temp+" in "+field)
         except:
             print "Api connection failed"
     

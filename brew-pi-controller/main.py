@@ -37,4 +37,5 @@ if __name__ == "__main__":
         #Check current profil data 
         #if bad temperature Work on fridge temperature 
         #Be carefull to anticipate temperature limit
-        time.sleep(120)
+        print("waiting")
+        time.sleep(10)
