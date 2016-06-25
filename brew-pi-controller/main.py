@@ -29,7 +29,7 @@ if __name__ == "__main__":
         #Update push data in api for each sensor
         #We have to push to thingspeek and local database
         logger.write(temperatureSensor[0].read(),"field1")
-        logger.write(temperatureSensor[0].read(),"field2")
+        logger.write(temperatureSensor[1].read(),"field2")
         #if we have to control temperature
         #If we have new sensor ask for name description and add to api
 
