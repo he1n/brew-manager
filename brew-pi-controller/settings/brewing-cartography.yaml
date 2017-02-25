@@ -1,7 +1,7 @@
 
 step-1:
   time: 1
-  temperature: 20
+  temperature: 30
 step-2:
   time: 1
-  temperature: 20  
+  temperature: 40  
