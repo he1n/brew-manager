@@ -1,0 +1,7 @@
+index:
+   path: /
+   defaults:  { _controller: AppBundle:Default:index }
+
+current_brewing:
+   path: /ws/brewing
+   defaults:  { _controller: AppBundle:Default:getCurrentBrewing }

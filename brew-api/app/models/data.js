@@ -7,6 +7,7 @@ var Schema = mongoose.Schema,
 var dataSchema   = new Schema({
 	id: ObjectId,
     value: Number,
+    brewingId:String,
     date: { type: Date, default: Date.now },
     sensorId: String,
 });

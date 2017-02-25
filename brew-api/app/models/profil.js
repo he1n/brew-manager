@@ -6,6 +6,7 @@ var Schema = mongoose.Schema,
 
 var profilSchema   = new Schema({
 	id: ObjectId,
+	type: String,
     name: String,
     description: String,
 });

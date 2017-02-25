@@ -15,4 +15,6 @@ class Logger:
             print("write temp "+temp+" in "+field)
         except:
             print "Api connection failed"
-    
+    def logBrewingApi(self,model,datas):
+
+
