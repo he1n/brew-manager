@@ -49,8 +49,11 @@ if __name__ == "__main__":
     	#Check if we have to start the timer  
         print "Temperature min for step = " + str(cartography["step-" + str(currentStep)]["temperature"] - temperaturePrecision)
         print "Temperature max for step = " + str(cartography["step-" + str(currentStep)]["temperature"] + temperaturePrecision)
-        if timerStarted != True and ( currentTemperature > float((cartography["step-" + str(currentStep)]["temperature"] - temperaturePrecision)) and currentTemperature < float((cartography["step-" + str(currentStep)]["temperature"] + temperaturePrecision))) :
-            print "start timer"
+        print str(timerStarted != True)
+        print str(float(currentTemperature) > float(cartography["step-" + str(currentStep)]["temperature"] - temperaturePrecision))
+        print str(float(currentTemperature) < float(cartography["step-" + str(currentStep)]["temperature"] + temperaturePrecision))
+        if timerStarted != True and ( float(currentTemperature) > float(cartography["step-" + str(currentStep)]["temperature"] - temperaturePrecision) and float(currentTemperature) < float(cartography["step-" + str(currentStep)]["temperature"] + temperaturePrecision)) :
+            print "Start timer !!!!!"
             timerStarted = True
             start_time = time.time()
     	else:
