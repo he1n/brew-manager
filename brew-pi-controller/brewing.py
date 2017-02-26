@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import yaml
 import os
@@ -14,9 +14,11 @@ def get_immediate_subdirectories(a_dir):
 if __name__ == "__main__":
     #Init variables for brewing 
     cartographyName = "brewing-cartography.yaml"
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
     temperaturePrecision = 2
     cartography = False
-    gpio = 11
+    gpioPin = 11
     havetoleave = False
     timer = 0
     currentStep = 1
@@ -24,7 +26,7 @@ if __name__ == "__main__":
     timerStarted = False
     startTime = 0
     sleeptime = 0.1
-    GPIO.setup(gpionb, GPIO.OUT, initial = GPIO.HIGH)
+    GPIO.setup(gpioPin, GPIO.OUT, initial = GPIO.HIGH)
     subdir = get_immediate_subdirectories("/sys/bus/w1/devices")
     temperatureSensor = []
     for dir in subdir:
@@ -39,13 +41,14 @@ if __name__ == "__main__":
             sys.exit(0)
 
     print cartography["step-" + str(currentStep)]
-
+    print str(havetoleave != True)    
     while(havetoleave != True):
     	currentTemperature = temperatureSensor[0].read()
-    	print currentTemperature
+    	print "Temperature : " + currentTemperature
+        print "Step temperature : " + str(cartography["step-" + str(currentStep)]['temperature'])
     	#Check if we have to start the timer  
-        if timerStarted != True and ( currentTemperature > (cartography.temperature - temperaturePrecision) and currentTemperature < (cartography.temperature + temperaturePrecision)) :
-            print "start timer "
+        if timerStarted != True and ( float(currentTemperature) > float((cartography["step-" + str(currentStep)]["temperature"] - temperaturePrecision)) and float(currentTemperature) < float((cartography["step-" + str(currentStep)]["temperature"] + temperaturePrecision))) :
+            print "start timer"
             timerStarted = True
             start_time = time.time()
     	else:
@@ -57,27 +60,27 @@ if __name__ == "__main__":
     	    #if time of current step is over we stop time and increment step   
     	    if currentTime >= cartography["step-" + str(currentStep)]['time'] :
                 print "step is over so we change step or quit "
-    		    timerStarted = False
-    		    currentTime = 0
-    		    currentStep += 1
-    		    #if we have no more steps we leave 
-       		    if not ("step-" + str(currentStep)) in cartography:
+    		timerStarted = False
+    		currentTime = 0
+                currentStep += 1
+    		#if we have no more steps we leave 
+       		if not ("step-" + str(currentStep)) in cartography:
                     print "leave bacause we have no more space"
-       			    havetoleave = True
-       			    break
-
+                    havetoleave = True
+       	            break
         #Check if we have to up temperature or not 
-        if currentTemperature < cartography["step-" + str(currentStep)]['temperature']:
+        if float(currentTemperature) < float(cartography["step-" + str(currentStep)]['temperature']):
             # Start resistance
-            GPIO.setup(gpionb, GPIO.OUT, initial = GPIO.LOW)
-            break 
+            GPIO.setup(gpioPin, GPIO.OUT, initial = GPIO.LOW) 
+            print "start resistance"
         else:
-            GPIO.setup(gpionb, GPIO.OUT, initial = GPIO.HIGH)
-            break
+            GPIO.setup(gpioPin, GPIO.OUT, initial = GPIO.HIGH)
+            print "stop resistance"
             # Stop Resistance	
-
+        print "end loop"
     #We stop the resistance 
-
+    GPIO.setup(gpioPin, GPIO.OUT, initial = GPIO.HIGH)
+    print "out because " + str(havetoleave)
 
     #Get all sensor name 
     #subdir = get_immediate_subdirectories("/sys/bus/w1/devices")
